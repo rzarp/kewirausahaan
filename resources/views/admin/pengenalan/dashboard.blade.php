@@ -36,36 +36,38 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Provinsi</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>--Pilih salah satu--</option>
-                                                <option>Jawa Barat</option>
+                                            <select class="form-control" id="provinsi">
+                                                <option>--Pilih Provinsi --</option>
+                                                @foreach ($provinces as $provinsi)
+                                                    <option value="{{$provinsi->id}}">{{$provinsi->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Kabupaten/kota *)</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>--Pilih salah satu--</option>
-                                                <option>Depok</option>
+                                            <select class="form-control" id="kabupaten">
+                                               
+                                                
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Kecamatan</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>--Pilih salah satu--</option>
-                                                <option>Tapos</option>
+                                            <select class="form-control" id="kecamatan">
+                                               
+                                                
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Kelurahan/Desa/Nagari *)</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>--Pilih salah satu--</option>
-                                                <option>Cilangkap</option>
+                                            <select class="form-control" id="desa">
+                                               
+                                                
                                             </select>
                                         </div>
                                     </div>
@@ -193,4 +195,85 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+    <script>
+        $(function () {
+           $.ajaxSetup({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+           }); 
+
+        //    provinsi 
+           $(function() {
+                $('#provinsi').on('change', function(){
+                    let id_provinsi = $('#provinsi').val();
+
+                    $.ajax({
+                        type: 'POST',
+                        url : "{{route('getkabupaten')}}",
+                        data : {id_provinsi:id_provinsi}, 
+                        cache : false,
+
+                        success: function(msg) {
+                            $('#kabupaten').html(msg);
+                        },
+                        error: function(data) {
+                            console.log('error',data)
+                        },
+                    })
+                    // console.log(id_provinsi);
+                });
+           })
+
+        //    kabupaten
+           $(function() {
+                $('#kabupaten').on('change', function(){
+                    let id_kabupaten = $('#kabupaten').val();
+
+                    $.ajax({
+                        type: 'POST',
+                        url : "{{route('getkecamatan')}}",
+                        data : {id_kabupaten:id_kabupaten}, 
+                        cache : false,
+
+                        success: function(msg) {
+                            $('#kecamatan').html(msg);
+                            
+                        },
+                        error: function(data) {
+                            console.log('error',data)
+                        },
+                    })
+                    // console.log(id_provinsi);
+                });
+           });
+
+        //    kecamatan
+           $(function() {
+                $('#kecamatan').on('change', function(){
+                    let id_kecamatan = $('#kecamatan').val();
+
+                    $.ajax({
+                        type: 'POST',
+                        url : "{{route('getdesa')}}",
+                        data : {id_kecamatan:id_kecamatan}, 
+                        cache : false,
+
+                        success: function(msg) {
+                            $('#desa').html(msg);
+                            
+                        },
+                        error: function(data) {
+                            console.log('error',data)
+                        },
+                    })
+                    // console.log(id_provinsi);
+                });
+           });
+
+
+
+        });
+    </script>
 @endsection

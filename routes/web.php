@@ -35,5 +35,8 @@ Route::prefix('excel')->group(function () {
 // pengel
 Route::prefix('blok1')->group(function () {
     Route::get('/dashboard-blok1', [PengenalanController::class, 'index'])->name('pengenalan')->middleware('auth');
-    
+    Route::post('/dashboard/getkabupaten', [PengenalanController::class, 'getkabupaten'])->name('getkabupaten')->middleware('auth');
+    Route::post('/dashboard/getkecamatan', [PengenalanController::class, 'getkecamatan'])->name('getkecamatan')->middleware('auth');
+    Route::post('/dashboard/getdesa', [PengenalanController::class, 'getdesa'])->name('getdesa')->middleware('auth');
 });
+

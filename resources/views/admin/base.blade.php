@@ -4,6 +4,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<title>@yield('title')</title>
 		<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+		<meta name="csrf-token" content="{{ csrf_token() }}"/>
 		<link rel="icon" href="{{ url('assets/img/logoera.png') }}" type="image/x-icon"/>
 	
 		<!-- Fonts and icons -->
@@ -787,5 +788,6 @@
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
 	</script>
+	@yield('script')
 </body>
 </html>
