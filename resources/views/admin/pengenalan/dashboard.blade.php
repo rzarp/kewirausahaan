@@ -217,6 +217,8 @@
 
                         success: function(msg) {
                             $('#kabupaten').html(msg);
+                            $('#kecamatan').html('');
+                            $('#desa').html('');
                         },
                         error: function(data) {
                             console.log('error',data)
@@ -239,6 +241,7 @@
 
                         success: function(msg) {
                             $('#kecamatan').html(msg);
+                            $('#desa').html('');
                             
                         },
                         error: function(data) {
