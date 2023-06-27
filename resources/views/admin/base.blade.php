@@ -68,6 +68,7 @@
 				@yield('dashboard')
 				@yield('blok1')
 				@yield('import-excel')
+				@yield('user')
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">

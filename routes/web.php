@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\PengenalanController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +33,16 @@ Route::prefix('excel')->group(function () {
     
 });
 
-// pengel
-Route::prefix('blok1')->group(function () {
-    Route::get('/dashboard-blok1', [PengenalanController::class, 'index'])->name('pengenalan')->middleware('auth');
-    Route::post('/dashboard/getkabupaten', [PengenalanController::class, 'getkabupaten'])->name('getkabupaten')->middleware('auth');
-    Route::post('/dashboard/getkecamatan', [PengenalanController::class, 'getkecamatan'])->name('getkecamatan')->middleware('auth');
-    Route::post('/dashboard/getdesa', [PengenalanController::class, 'getdesa'])->name('getdesa')->middleware('auth');
+// pengenalan
+Route::prefix('blok1')->middleware('auth')->group(function () {
+    Route::get('/dashboard-blok1', [PengenalanController::class, 'index'])->name('pengenalan');
+    Route::post('/dashboard/getkabupaten', [PengenalanController::class, 'getkabupaten'])->name('getkabupaten');
+    Route::post('/dashboard/getkecamatan', [PengenalanController::class, 'getkecamatan'])->name('getkecamatan');
+    Route::post('/dashboard/getdesa', [PengenalanController::class, 'getdesa'])->name('getdesa');
+});
+
+Route::prefix('user')->middleware('auth')->group(function () {
+    Route::get('/user-insert', [UserController::class, 'index'])->name('user.insert');
+    Route::get("/update/toggle/{id}", [UserController::class, "changeUserStatus"]);
 });
 

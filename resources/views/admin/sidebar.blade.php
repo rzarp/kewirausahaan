@@ -36,24 +36,44 @@
             </div>
         </div>
         <ul class="nav nav-primary">
-            <li class="nav-item active">
+            <li class="nav-item {{ (request()->is('dashboard')) ? 'active' : '' }}" >
                 <a  href="{{route('dashboard')}}" class="collapsed" aria-expanded="false">
                     <i class="fas fa-home"></i>
                     <p>Dashboard</p>
-                    {{-- <span class="caret"></span> --}}
+                    <!-- <span class="caret"></span>  -->
                 </a>
 
-               
-                {{-- <div class="collapse" id="dashboard">
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Data Master</h4>
+                </li>
+
+                <li class="nav-item">
+                <a data-toggle="collapse" href="#charts">
+                    <i class="far fa-chart-bar"></i>
+                    <p>User</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse" id="charts">
                     <ul class="nav nav-collapse">
-                        <li>
-                            <a href="../demo1/index.html">
-                                <span class="sub-item">Dashboard 1</span>
+                        <li class="{{ (request()->is('user/user-insert')) ? 'active' : '' }}">
+                            <a href="{{route('user.insert')}}">
+                                <span class="sub-item">User</span>
                             </a>
                         </li>
-                       
+                        <li>
+                            <a href="#">
+                                <span class="sub-item">Sparkline</span>
+                            </a>
+                        </li>
                     </ul>
-                </div> --}}
+                </div>
+            </li>
+
+               
+               
             </li>
 
             <li class="nav-section">
@@ -64,11 +84,11 @@
             </li>
 
 
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('blok1/dashboard-blok1')) ? 'active' : '' }}">
                 <a href="{{route('pengenalan')}}">
                     <i class="far fa-question-circle"></i>
                     <p>Pengenalan Tempat Usaha</p>
-                    {{-- <span class="badge badge-count">6</span> --}}
+                    <!-- <span class="badge badge-count">6</span>  -->
                 </a>
             </li>
 
@@ -77,8 +97,10 @@
                 <span class="sidebar-mini-icon">
                     <i class="fa fa-ellipsis-h"></i>
                 </span>
-                <h4 class="text-section">Upload FIle</h4>
+                <h4 class="text-section">Data Master</h4>
             </li>
+
+            
          
            
            
@@ -108,7 +130,7 @@
                 <a href="{{route('excel.import')}}">
                     <i class="far fa-question-circle"></i>
                     <p>Faqs</p>
-                    {{-- <span class="badge badge-count">6</span> --}}
+                    <!-- <span class="badge badge-count">6</span> -->
                 </a>
             </li>
 
