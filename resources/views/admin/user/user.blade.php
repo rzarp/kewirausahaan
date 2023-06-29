@@ -1,132 +1,155 @@
 @extends('admin.base')
 @section('title', 'Data master user')
 @section('user')
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header">
-            <div class="d-flex align-items-center">
-                <h4 class="card-title">Input Data Untuk Blok I</h4>
-                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-                    <i class="fa fa-plus"></i>
-                    Input Data
-                </button>
-            </div>
-        </div>
-        <div class="card-body">
-            <!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header border-0">
-                            <h5 class="modal-title">
-                                <span class="fw-mediumbold">
-                                Blok</span> 
-                                <span class="fw-light">
-                                    I
-                                </span>
-                            </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>NIK</label>
-                                            <input type="number" class="form-control" placeholder="NIK">
-                                        </div>
-                                    </div>
 
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>Username</label>
-                                            <input type="username" class="form-control" placeholder="Username">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>Nama</label>
-                                            <input type="name" class="form-control" placeholder="Nama">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" class="form-control" placeholder="Passoword">
-                                        </div>
-                                    </div>
+<div class="page-inner">
+    <div class="page-header">
+        <h4 class="page-title">Tables</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="#">
+                    <i class="flaticon-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a href="#">Tables</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a href="#">Basic Tables</a>
+            </li>
+        </ul>
+    </div>
 
-                                    <div class="col-sm-12">
-                                        <div class="form-check">
-                                            <label>Status</label><br>
-                                            <label class="form-radio-label">
-                                                <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
-                                                <span class="form-radio-sign">Aktif</span>
-                                            </label>
-                                            <label class="form-radio-label ml-3">
-                                                <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-                                                <span class="form-radio-sign">Tidak Aktif</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    
-
-                                    
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer border-0">
-                            <button type="button" id="addRowButton" class="btn btn-primary">Add</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-
-            <div class="table-responsive">
-                <table id="add-row" class="display table table-striped table-hover" >
-                    <thead>
-                        <tr>
-                            <th>NIK</th>
-                            <th>Username</th>
-                            <th>Nama</th>
-                            <th style="width: 10%">Status</th>
-                            <th style="width: 10%">Action</th>
-                        </tr>
-                    </thead>
-                    <!-- <tfoot>
-                        <tr>
-                        <th>NIK</th>
-                            <th>Username</th>
-                            <th>Nama</th>
-                            <th>Password</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot> -->
-                    <tbody>
-                        <tr>
-                            <td>00000123123123132</td>
-                            <td>rzarp</td>
-                            <td>Reza</td>
-                            <td>Aktif</td>
-                            <td>
-                                <div class="form-button-action">
-                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                        <i class="fa fa-times"></i>
-                                    </button>
+                <div class="modal-body">
+                    <form id="exampleModal" action="{{ route('user.post') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nama</label>
+                            <input type="name" class="form-control" placeholder="Nama" name="name">
+                            @error('name')
+                                <div class="text-danger">
+                                    {{ $message}}
                                 </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">username</label>
+                            <input type="username" class="form-control" placeholder="Username" name="username">
+                            @error('username')
+                                <div class="text-danger">
+                                    {{ $message}}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter Email">
+                            @error('email')
+                                <div class="text-danger">
+                                    {{ $message}}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                            @error('password')
+                                <div class="text-danger">
+                                    {{ $message}}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                        <label for="role">Role</label>
+                            
+                            <select name="role" class="form-control form-control" id="defaultSelect">
+                            @foreach($role as $r)
+                                <option value="{{ $r }}" {{ (old ('role') == $r ) ? 'selected' : '' }}>{{ $r }}</option>
+                            @endforeach
+                            @error('role')
+                                <div class="text-danger">
+                                    {{ $message}}   
+                                </div>
+                            @enderror
+                        </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button id="exampleModal" type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">Add Row</h4>
+                   
+                    <button type="btn btn-primary" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-plus"></i>
+                        Input Data
+                    </button>
+                </div>
+            </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                    <th>Table heading</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
 </div>
+
+
+
 @endsection

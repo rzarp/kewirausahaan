@@ -50,30 +50,13 @@
                     <h4 class="text-section">Data Master</h4>
                 </li>
 
-                <li class="nav-item">
-                <a data-toggle="collapse" href="#charts">
-                    <i class="far fa-chart-bar"></i>
+                <li class="nav-item {{ (request()->is('user/user-insert')) ? 'active' : '' }}" >
+                <a  href="{{route('user.insert')}}" class="collapsed" aria-expanded="false">
+                    <i class="fas fa-user"></i>
                     <p>User</p>
-                    <span class="caret"></span>
+                    <!-- <span class="caret"></span>  -->
                 </a>
-                <div class="collapse" id="charts">
-                    <ul class="nav nav-collapse">
-                        <li class="{{ (request()->is('user/user-insert')) ? 'active' : '' }}">
-                            <a href="{{route('user.insert')}}">
-                                <span class="sub-item">User</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="sub-item">Sparkline</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
-
-               
-               
             </li>
 
             <li class="nav-section">
@@ -91,53 +74,14 @@
                     <!-- <span class="badge badge-count">6</span>  -->
                 </a>
             </li>
-
-
-            <li class="nav-section">
-                <span class="sidebar-mini-icon">
-                    <i class="fa fa-ellipsis-h"></i>
-                </span>
-                <h4 class="text-section">Data Master</h4>
             </li>
-
-            
-         
-           
-           
-            <li class="nav-item">
-                <a data-toggle="collapse" href="#charts">
-                    <i class="far fa-chart-bar"></i>
-                    <p>Charts</p>
-                    <span class="caret"></span>
-                </a>
-                <div class="collapse" id="charts">
-                    <ul class="nav nav-collapse">
-                        <li>
-                            <a href="charts/charts.html">
-                                <span class="sub-item">Chart Js</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="charts/sparkline.html">
-                                <span class="sub-item">Sparkline</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-           
-            <li class="nav-item">
+            <li class="nav-item {{ (request()->is('excel/import-excel')) ? 'active' : '' }}">
                 <a href="{{route('excel.import')}}">
                     <i class="far fa-question-circle"></i>
                     <p>Faqs</p>
                     <!-- <span class="badge badge-count">6</span> -->
                 </a>
             </li>
-
-           
-
-
-          
         </ul>
     </div>
 </div>

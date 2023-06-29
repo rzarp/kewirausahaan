@@ -43,6 +43,7 @@ Route::prefix('blok1')->middleware('auth')->group(function () {
 
 Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('/user-insert', [UserController::class, 'index'])->name('user.insert');
+    Route::post('/user-post', [UserController::class, 'store'])->name('user.post');
     Route::get("/update/toggle/{id}", [UserController::class, "changeUserStatus"]);
 });
 

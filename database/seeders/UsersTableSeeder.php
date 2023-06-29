@@ -18,11 +18,12 @@ class UsersTableSeeder extends Seeder
     {
         $data = [
             0 => [
-                'id' => Str::uuid(),
+                // 'id' => Str::uuid(),
                 'name' => 'Super Admin',
                 'username' => 'superadmin',
                 'email' => 'superadmin@gmail.com',
                 'password' => Hash::make('12345678'),
+                'role' => '1',
             ]
 
         ];
