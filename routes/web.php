@@ -44,6 +44,9 @@ Route::prefix('blok1')->middleware('auth')->group(function () {
 Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('/user-insert', [UserController::class, 'index'])->name('user.insert');
     Route::post('/user-post', [UserController::class, 'store'])->name('user.post');
-    Route::get("/update/toggle/{id}", [UserController::class, "changeUserStatus"]);
+    Route::any("/update/toggle/{id}", [UserController::class, "changeUserStatus"]);
+    Route::get('/user/edit/{id}',[UserController::class,'edit'])->name('user.edit');
+    Route::put('/user/update/{id}',[UserController::class,'update'])->name('user.update');
+    Route::delete('/user/delete/{id}',[UserController::class,'destroy'])->name('user.destroy');
 });
 

@@ -6,7 +6,7 @@
 		<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 		<meta name="csrf-token" content="{{ csrf_token() }}"/>
 		<link rel="icon" href="{{ url('assets/img/logoera.png') }}" type="image/x-icon"/>
-	
+		
 		<!-- Fonts and icons -->
 		<script src="{{ url('assets/js/plugin/webfont/webfont.min.js') }}"></script>
 		<script>
@@ -25,8 +25,13 @@
 	
 		<!-- CSS Just for demo purpose, don't include it in your project -->
 		<link rel="stylesheet" href="{{ url('assets/css/demo.css') }}">
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/css/bootstrap5-toggle.min.css"rel="stylesheet">
 	</head>
 <body>
+
+@stack('css')
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
@@ -564,6 +569,7 @@
 		</div>
 		<!-- End Custom template -->
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/js/bootstrap5-toggle.ecmas.min.js"></script>
 	<!--   Core JS Files   -->
 	<script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}"></script>
 	<script src="{{asset('assets/js/core/popper.min.js')}}"></script>
@@ -789,6 +795,6 @@
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
 	</script>
-	@yield('script')
+	@stack('script')
 </body>
 </html>
