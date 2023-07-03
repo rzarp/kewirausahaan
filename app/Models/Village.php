@@ -45,4 +45,6 @@ class Village extends Model
     {
         return $this->belongsTo(District::class);
     }
+
+   
 }

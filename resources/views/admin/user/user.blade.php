@@ -26,7 +26,7 @@
         </ul>
     </div>
 
-    
+
     <!-- Modal Insert -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -117,14 +117,14 @@
                     <form action="" method="post" id="form-edit" enctype="multipart/form-data" class="form-horizontal">
                     @method('PUT')
                     @csrf
-                    
+
                         <div class="form-group">
                             <label for="name">Nama</label>
                             <input type="text" class="form-control" id="edit-name" placeholder="Nama" name="name">
-                            
+
                         </div>
-                 
-                    
+
+
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="edit-username" placeholder="Username" name="username">
@@ -155,7 +155,7 @@
                             @enderror
                         </div>
 
-                        
+
                         <div class="form-group">
                             <label for="role">Role</label>
                             <select name="role" class="form-control" id="edit-role">
@@ -170,7 +170,7 @@
                             @enderror
                         </div>
 
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -181,14 +181,14 @@
         </div>
     </div>
 
-    
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
             <div class="card-header">
                 <div class="d-flex align-items-center">
                     <h4 class="card-title">Add Row</h4>
-                   
+
                     <button type="btn btn-primary" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-plus"></i>
                         Input Data
@@ -197,7 +197,7 @@
             </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -234,32 +234,34 @@
                                                     <input onchange="this.form.submit()" class="form-check-input" type="checkbox" data-toggle="toggle" {{ $users->status_user == 1 ? 'checked' : '' }}>
                                                 </div>
                                             </form>
-                                       </td>
+                                        </td>
                                         <td>
 
-                                       
+
                                         <div class="form-button-action">
                                         <button value="{{$users->id}}" class="btn btn-link btn-primary btn-lg" onclick="editmodal('{{$users->id}}')">
                                                 <i class="fa fa-edit"></i>
                                         </button>
-                                        <form action="{{url('/user')}}/user/delete/{{ $users->id }}" method="POST">
+                                        {{-- <form action="{{ url('/user/user/delete/' . $users->id) }}" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <a href="{{url('/user')}}/user/delete/{{ $users->id }}" type="submit" class="btn btn-link btn-danger btn-lg" data-confirm-delete="true">
+                                            <button class="btn btn-link btn-danger btn-lg" data-confirm-delete="true">
                                                 <i class="fa fa-trash"></i>
-                                            </a>
-
-                                        </form> 
+                                            </button>
+                                        </form> --}}
+                                        <a href="{{ url('/user/user/delete/' . $users->id) }}" class="btn btn-link btn-danger btn-lg delete-confirm" data-id="{{ $users->id }}">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                         </div>
-                                        
-                                        
+
+
 
                                         </td>
                                     </tr>
                                 </tbody>
                                 @endforeach
                             @endif
-                            
+
                         </table>
                     </div>
                 </div>
@@ -271,7 +273,7 @@
 
 @push('script')
     <script type="text/javascript">
-      
+
       function editmodal(id) {
         $.get('user/edit/'+id, function (data) {
                 $('#editModal').modal('show');
@@ -285,9 +287,30 @@
             })
       }
       $(document).ready(function () {
-         
+
       });
-    
+
+  </script>
+
+
+<script>
+    $('body').on('click','.delete-confirm',function (event) {
+      event.preventDefault();
+      const url = $(this).attr('href');
+      Swal.fire({
+        title: 'Apakah Kamu Yakin ? ',
+        text: "Hapus Data ini!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Hapus'
+      }).then((result) => {
+        if (result.value) {
+          window.location.href = url;
+        }
+      })
+    });
   </script>
 @endpush
 

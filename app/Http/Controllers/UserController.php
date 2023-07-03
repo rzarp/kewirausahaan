@@ -17,17 +17,17 @@ class UserController extends Controller
 {
     public function index() {
         $data['user'] = User::where('id', '!=', Auth::id())->get();
-        $data['role'] = ['0','1']; 
+        $data['role'] = ['0','1'];
 
 
-        $title = 'Delete User!';
-        $text = "Are you sure you want to delete?";
-        confirmDelete($title, $text);
+        // $title = 'Delete User!';
+        // $text = "Are you sure you want to delete?";
+        // confirmDelete($title, $text);
 
         return view('admin.user.user',$data);
     }
 
-    public function store (Request $request) 
+    public function store (Request $request)
     {
         $request->validate([
             'id' => Str::uuid()->toString(),
@@ -46,11 +46,17 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->save();
 
+        if ($user->save()) {
+            Alert::success('Success', 'Data Berhasil Simpan');
+        } else {
+            Alert::error('Error', 'Data Tidak Tersimpan');
+        }
+
 
         // dd(request()->all());
-        return redirect(route('user.insert'))->with('pesan' , 'Data berhasil disimpan');
+        return redirect(route('user.insert'));
 
-        
+
     }
 
     public function changeUserStatus($id) {
@@ -70,32 +76,92 @@ class UserController extends Controller
 
     public function edit($id) {
         $user = User::find($id);
-
-        
         return $user;
     }
 
-    public function update(Request $request, $id) {
+    // public function update(Request $request, $id) {
 
-        // return $request;
-        DB::table('users')
-            ->where('id', $id)
-            ->update([
-                'name' => $request->name,
-                'username' => $request->username,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role' => $request->role,
-            ]);
+    //     // return $request;
+    //     DB::table('users')
+    //         ->where('id', $id)
+    //         ->update([
+    //             'name' => $request->name,
+    //             'username' => $request->username,
+    //             'email' => $request->email,
+    //             'password' => Hash::make($request->password),
+    //             'role' => $request->role,
+    //         ]);
 
-            return redirect(route('user.insert'))->with('pesan' , 'Data berhasil disimpan');
+    //         if ($user->save()) {
+    //             Alert::success('Success', 'Data Berhasil Simpan');
+    //         } else {
+    //             Alert::error('Error', 'Data Tidak Tersimpan');
+    //         }
+
+
+    //         return redirect(route('user.insert'))->with('pesan' , 'Data berhasil disimpan');
+    // }
+
+    public function update(Request $request, $id)
+{
+    try {
+        $user = User::find($id);
+
+        if (!$user) {
+            Alert::error('Error', 'User not found');
+            return redirect()->back();
+        }
+
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+
+        if ($user->save()) {
+            Alert::success('Success', 'Data Berhasil Disimpan');
+            return redirect(route('user.insert'))->with('pesan', 'Data berhasil disimpan');
+        } else {
+            Alert::error('Error', 'Data Tidak Tersimpan');
+            return redirect()->back();
+        }
+    } catch (\Exception $ex) {
+        Alert::error('Error', 'An error occurred. Please try again later.');
+        return redirect()->back();
     }
+}
+
 
     public function destroy($id)
     {
 
         $user = User::find($id);
-        $user->delete();       
+        $user->delete();
+
+        if ($user->delete()) {
+            Alert::success('Success', 'Data Berhasil Dihapus');
+        } else {
+            Alert::error('Error', 'Data Tidak terhapus');
+        }
+
         return redirect()->back();
+    }
+
+
+    public function trash() {
+        $restore = User::onlyTrashed()->get();
+        return view('admin.user.restore',compact('restore'));
+    }
+
+    public function restore($id = null) {
+        if ($id != null) {
+            $restore = User::onlyTrashed()->get()
+                ->where('id', $id)
+                ->restore();
+        }else {
+            $restore = User::onlyTrashed()->restore();
+        }
+
+        return redirect(route('trash.user'))->with('pesan' , 'Data berhasil restore');
     }
 }

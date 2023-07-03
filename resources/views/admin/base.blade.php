@@ -6,7 +6,7 @@
 		<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 		<meta name="csrf-token" content="{{ csrf_token() }}"/>
 		<link rel="icon" href="{{ url('assets/img/logoera.png') }}" type="image/x-icon"/>
-		
+
 		<!-- Fonts and icons -->
 		<script src="{{ url('assets/js/plugin/webfont/webfont.min.js') }}"></script>
 		<script>
@@ -18,11 +18,11 @@
 				}
 			});
 		</script>
-	
+
 		<!-- CSS Files -->
 		<link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ url('assets/css/atlantis.css') }}">
-	
+
 		<!-- CSS Just for demo purpose, don't include it in your project -->
 		<link rel="stylesheet" href="{{ url('assets/css/demo.css') }}">
 
@@ -36,7 +36,7 @@
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
-				
+
 				<a href="index.html" class="logo">
 					<img src="{{asset('assets/img/logo.svg')}}" alt="navbar brand" class="navbar-brand">
 				</a>
@@ -56,14 +56,14 @@
 
 			<!-- Navbar Header -->
 			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-				
+
 				@include('admin.navbar')
 			</nav>
 			<!-- End Navbar -->
 		</div>
 
 		<!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">			
+		<div class="sidebar sidebar-style-2">
 			@include('admin.sidebar')
 		</div>
 		<!-- End Sidebar -->
@@ -74,6 +74,7 @@
 				@yield('blok1')
 				@yield('import-excel')
 				@yield('user')
+				@yield('restore-user')
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">
@@ -98,11 +99,11 @@
 					</nav>
 					<div class="copyright ml-auto">
 						2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="http://www.themekita.com">ThemeKita</a>
-					</div>				
+					</div>
 				</div>
 			</footer>
 		</div>
-		
+
 		<div class="quick-sidebar">
 			<a href="#" class="close-quick-sidebar">
 				<i class="flaticon-cross"></i>
@@ -569,6 +570,7 @@
 		</div>
 		<!-- End Custom template -->
 	</div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.0.4/js/bootstrap5-toggle.ecmas.min.js"></script>
 	<!--   Core JS Files   -->
 	<script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}"></script>
@@ -597,8 +599,8 @@
 	<!-- Datatables -->
 	<script src="{{asset('assets/js/plugin/datatables/datatables.min.js')}}"></script>
 
-	<!-- Bootstrap Notify -->
-	<script src="{{asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+	{{-- <!-- Bootstrap Notify -->
+	<script src="{{asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script> --}}
 
 	<!-- Bootstrap Toggle -->
 	<script src="{{asset('assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js')}}"></script>

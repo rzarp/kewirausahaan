@@ -51,12 +51,19 @@
                 </li>
 
                 <li class="nav-item {{ (request()->is('user/user-insert')) ? 'active' : '' }}" >
-                <a  href="{{route('user.insert')}}" class="collapsed" aria-expanded="false">
-                    <i class="fas fa-user"></i>
-                    <p>User</p>
-                    <!-- <span class="caret"></span>  -->
-                </a>
-            </li>
+                    <a  href="{{route('user.insert')}}" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        <p>User</p>
+                        <!-- <span class="caret"></span>  -->
+                    </a>
+                </li>
+                <li class="nav-item {{ (request()->is('user/trash/user')) ? 'active' : '' }}" >
+                    <a  href="{{route('trash.user')}}" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-trash"></i>
+                        <p>Restore</p>
+                        <!-- <span class="caret"></span>  -->
+                    </a>
+                </li>
             </li>
 
             <li class="nav-section">
