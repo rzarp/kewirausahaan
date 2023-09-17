@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\PengenalanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\IndikatorController;
+use App\Http\Controllers\SumberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,5 +60,39 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('/trash/user', [UserController::class, 'trash'])->name('trash.user');
     Route::get('/restore/user/{id?}', [UserController::class, 'restore'])->name('restore.user');
     Route::get('/delete/user/{id?}', [UserController::class, 'delete'])->name('delete.user');
+});
+
+
+// indikator
+Route::prefix('indikator')->middleware('auth')->group(function () {
+    Route::get('/get', [IndikatorController::Class, 'index'])->name('indikator.all');
+    Route::get('/show', [IndikatorController::Class, 'show'])->name('indikator.show');
+    Route::get('/create', [IndikatorController::class, 'create'])->name('indikator.create');
+    Route::post('/post', [IndikatorController::class, 'store'])->name('indikator.post');
+    Route::get('/edit/{id}',[IndikatorController::class,'edit'])->name('indikator.edit');
+    Route::put('/edit/{id}',[IndikatorController::class,'update'])->name('indikator.update');
+    Route::get('/delete/{id}',[IndikatorController::class,'destroy'])->name('indikator.destroy');
+});
+
+// sumber
+Route::prefix('sumber')->middleware('auth')->group(function () {
+    Route::get('/get', [SumberController::Class, 'index'])->name('sumber.all');
+    Route::get('/show', [SumberController::Class, 'show'])->name('sumber.show');
+    Route::get('/create', [SumberController::class, 'create'])->name('sumber.create');
+    Route::post('/post', [SumberController::class, 'store'])->name('sumber.post');
+    Route::get('/edit/{id}',[SumberController::class,'edit'])->name('sumber.edit');
+    Route::put('/edit/{id}',[SumberController::class,'update'])->name('sumber.update');
+    Route::get('/delete/{id}',[SumberController::class,'destroy'])->name('sumber.destroy');
+});
+
+// formula
+Route::prefix('formula')->middleware('auth')->group(function () {
+    Route::get('/get', [FormulaController::Class, 'index'])->name('formula.all');
+    Route::get('/show', [FormulaController::Class, 'show'])->name('formula.show');
+    Route::get('/create', [FormulaController::class, 'create'])->name('formula.create');
+    Route::post('/post', [FormulaController::class, 'store'])->name('formula.post');
+    Route::get('/edit/{id}',[FormulaController::class,'edit'])->name('formula.edit');
+    Route::put('/edit/{id}',[FormulaController::class,'update'])->name('formula.update');
+    Route::get('/delete/{id}',[FormulaController::class,'destroy'])->name('formula.destroy');
 });
 

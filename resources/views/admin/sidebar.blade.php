@@ -70,11 +70,34 @@
                 <span class="sidebar-mini-icon">
                     <i class="fa fa-ellipsis-h"></i>
                 </span>
-                <h4 class="text-section">Blok I</h4>
+                <h4 class="text-section">Indikator Dan Formula</h4>
             </li>
 
 
-            <li class="nav-item {{ (request()->is('blok1/dashboard-blok1')) ? 'active' : '' }}">
+            <li class="nav-item">
+                <a data-toggle="collapse" href="#email-nav">
+                    <i class="far fa-envelope"></i>
+                    <p>Data</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse" id="email-nav">
+                    <ul class="nav nav-collapse">
+                        <li>
+                            <a href="{{route('indikator.all')}}">
+                                <span class="sub-item">Indikator</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('sumber.all')}}">
+                                <span class="sub-item">Sumber</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+            {{-- <li class="nav-item {{ (request()->is('blok1/dashboard-blok1')) ? 'active' : '' }}">
                 <a href="{{route('pengenalan')}}">
                     <i class="far fa-question-circle"></i>
                     <p>Pengenalan Tempat Usaha</p>
@@ -88,7 +111,7 @@
                     <p>Faqs</p>
                     <!-- <span class="badge badge-count">6</span> -->
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>

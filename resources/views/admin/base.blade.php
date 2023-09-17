@@ -75,6 +75,15 @@
 				@yield('import-excel')
 				@yield('user')
 				@yield('restore-user')
+                @yield('indikator')
+                @yield('indikator-create')
+                @yield('indikator-edit')
+                @yield('sumber')
+                @yield('sumber-create')
+                @yield('sumber-edit')
+                @yield('formula')
+                @yield('formula-create')
+                @yield('formula-edit')
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">

@@ -10,14 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Models\Province;
-use App\Models\Regency;
-use App\Models\District;
-use App\Models\Village;
-
-class Pengenalan extends Model
+class Sumber extends Model
 {
-
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     protected $primaryKey = 'id';
@@ -40,29 +34,8 @@ class Pengenalan extends Model
     ];
 
 
-    public function get_provinsi()
-    {
-        $provinsi = Province::where('id',$this->provinsi)->first();
-        return $provinsi;
-    }
-
-    public function get_kabupaten()
-    {
-        $kabupaten = Regency::where('id',$this->kabupaten)->first();
-        return $kabupaten;
-    }
-
-    public function get_kecamatan()
-    {
-        $kecamatan = District::where('id',$this->kecamatan)->first();
-        return $kecamatan;
-    }
-
-    public function get_kelurahan()
-    {
-        $kelurahan = Village::where('id',$this->kelurahan)->first();
-        return $kelurahan;
-    }
-
-
+    // public function sumber()
+    // {
+    //     return $this->hasMany(Rasio::class, "id_sumber");
+    // }
 }
