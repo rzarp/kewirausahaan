@@ -84,6 +84,9 @@
                 @yield('formula')
                 @yield('formula-create')
                 @yield('formula-edit')
+                @yield('rasio')
+                @yield('rasio-create')
+                @yield('rasio-edit')
 			</div>
 			<footer class="footer">
 				<div class="container-fluid">

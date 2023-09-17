@@ -33,6 +33,11 @@ class Indikator extends Model
         'email_verified_at' => 'datetime',
     ];
 
+    public function formula()
+    {
+        return $this->hasOne(Formula::class, "indikator_id");
+    }
+
 
     // public function indikator()
     // {

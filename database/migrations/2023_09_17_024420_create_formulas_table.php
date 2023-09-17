@@ -15,6 +15,8 @@ class CreateFormulasTable extends Migration
     {
         Schema::create('formulas', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid("indikator_id");
+            $table->foreign('indikator_id')->references('id')->on('indikators');
             $table->text('nama_formula');
             $table->text('formula');
             $table->char('created_by')->nullable();

@@ -6,6 +6,8 @@ use App\Http\Controllers\PengenalanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndikatorController;
 use App\Http\Controllers\SumberController;
+use App\Http\Controllers\FormulaController;
+use App\Http\Controllers\RasioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,5 +96,15 @@ Route::prefix('formula')->middleware('auth')->group(function () {
     Route::get('/edit/{id}',[FormulaController::class,'edit'])->name('formula.edit');
     Route::put('/edit/{id}',[FormulaController::class,'update'])->name('formula.update');
     Route::get('/delete/{id}',[FormulaController::class,'destroy'])->name('formula.destroy');
+});
+
+Route::prefix('rasio')->middleware('auth')->group(function () {
+    Route::get('/get', [RasioController::Class, 'index'])->name('rasio.all');
+    Route::get('/show', [RasioController::Class, 'show'])->name('rasio.show');
+    Route::get('/create', [RasioController::class, 'create'])->name('rasio.create');
+    Route::post('/post', [RasioController::class, 'store'])->name('rasio.post');
+    Route::get('/edit/{id}',[RasioController::class,'edit'])->name('rasio.edit');
+    Route::put('/edit/{id}',[RasioController::class,'update'])->name('rasio.update');
+    Route::get('/delete/{id}',[RasioController::class,'destroy'])->name('rasio.destroy');
 });
 

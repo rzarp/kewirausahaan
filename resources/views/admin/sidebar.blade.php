@@ -92,6 +92,35 @@
                                 <span class="sub-item">Sumber</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{route('formula.all')}}">
+                                <span class="sub-item">Formula</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li class="nav-section">
+                <span class="sidebar-mini-icon">
+                    <i class="fa fa-ellipsis-h"></i>
+                </span>
+                <h4 class="text-section">Rasio</h4>
+            </li>
+            <li class="nav-item">
+                <a data-toggle="collapse" href="#rasio">
+                    <i class="far fa-envelope"></i>
+                    <p>Rasio</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse" id="rasio">
+                    <ul class="nav nav-collapse">
+                        <li>
+                            <a href="{{route('rasio.all')}}">
+                                <span class="sub-item">Rasio</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
