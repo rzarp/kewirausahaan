@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use DataTables;
 use DB;
 use Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class IndikatorController extends Controller
 {
@@ -70,7 +71,13 @@ class IndikatorController extends Controller
         $indikator->indikator = $request->indikator;
         $indikator->created_by = Auth::user()->id;
         $indikator->save();
-        return redirect(route('indikator.create'))->with('pesan' , 'Data berhasil disimpan');
+
+        if ($indikator->save()) {
+            Alert::success('Success', 'Data Berhasil Simpan');
+        } else {
+            Alert::error('Error', 'Data Tidak Tersimpan');
+        }
+        return redirect(route('indikator.all'))->with('pesan' , 'Data berhasil disimpan');
     }
 
 
@@ -98,6 +105,12 @@ class IndikatorController extends Controller
     {
         $indikator = Indikator::find($id);
         $indikator->delete();
+
+        if ($indikator->delete()) {
+            Alert::success('Success', 'Data Berhasil Dihapus');
+        } else {
+            Alert::error('Error', 'Data Tidak terhapus');
+        }
         return redirect()->back();
     }
 }

@@ -32,10 +32,4 @@ class Formula extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-
-    public function indikator()
-    {
-        return $this->belongsTo(Indikator::class, "indikator_id");
-    }
 }

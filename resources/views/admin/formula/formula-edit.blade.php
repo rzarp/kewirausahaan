@@ -1,6 +1,6 @@
 @extends('admin.base')
-@section('formula-create')
-@section('title','formula create')
+@section('indikator-edit')
+@section('title','indikator edit')
 <div class="page-inner">
     <div class="page-header">
         <h4 class="page-title">Formula</h4>
@@ -50,12 +50,13 @@
                         </a>
                     </div>
                 </div>
-                <form action="{{ route('formula.post') }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{ route('formula.update', $formula->id) }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                 @csrf
+                @method('PUT')
                 <div class="card-body">
                         <div class="form-group">
                             <label for="formula">Nama Formula</label>
-                            <input type="text" class="form-control" name="nama_formula">
+                            <input type="text" class="form-control" name="nama_formula" value="{{old('nama_formula')}}">
                         </div>
 
                         <div class="upper">
@@ -123,6 +124,7 @@
 
 @push('script')
 <script>
+
 $( document ).ready(function() {
     var upperOp = $('.upper-op');
     var upperParent = upperOp.parent().parent();
@@ -152,6 +154,10 @@ $( document ).ready(function() {
         }
     });
 });
-
 </script>
+
+
+
+
+
 @endpush

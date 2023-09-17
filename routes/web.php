@@ -100,6 +100,8 @@ Route::prefix('formula')->middleware('auth')->group(function () {
 
 Route::prefix('rasio')->middleware('auth')->group(function () {
     Route::get('/get', [RasioController::Class, 'index'])->name('rasio.all');
+    Route::get('/formulaById/{id?}', [RasioController::Class, 'getFormulaById'])->name('rasio.formulaId');
+
     Route::get('/show', [RasioController::Class, 'show'])->name('rasio.show');
     Route::get('/create', [RasioController::class, 'create'])->name('rasio.create');
     Route::post('/post', [RasioController::class, 'store'])->name('rasio.post');

@@ -46,6 +46,7 @@
                                 <th scope="col">nama rasio</th>
                                 <th scope="col">sumber</th>
                                 <th scope="col">nama sumber</th>
+                                <th scope="col">id formula</th>
                                 <th scope="col">rasio</th>
                                 <th scope="col">cut off data</th>
                                 <th scope="col">action</th>
@@ -73,7 +74,30 @@
                   data: 'DT_RowIndex',
                   name: 'DT_RowIndex'
               },
-
+              {
+                data: 'nama_rasio',
+                name: 'nama_rasio'
+              },
+              {
+                data: 'id_sumber',
+                name: 'id_sumber'
+              },
+              {
+                data: 'sumber',
+                name: 'sumber'
+              },
+              {
+                data: 'id_formula',
+                name: 'id_formula'
+              },
+              {
+                data: 'rasio',
+                name: 'rasio'
+              },
+              {
+                data: 'cut_off_data',
+                name: 'cut_off_data'
+              },
               {
                   data: 'action',
                   name: 'action',

@@ -43,9 +43,11 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">nama formula</th>
-                                <th scope="col">formula</th>
-                                <th scope="col">action</th>
+                                <th scope="col">Nama formula</th>
+                                <th scope="col">Formula</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Updated At</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -77,6 +79,14 @@
               {
                   data: 'formula',
                   name: 'formula',
+              },
+              {
+                  data: 'created_at',
+                  name: 'created_at',
+              },
+              {
+                  data: 'updated_at',
+                  name: 'updated_at',
               },
               {
                   data: 'action',

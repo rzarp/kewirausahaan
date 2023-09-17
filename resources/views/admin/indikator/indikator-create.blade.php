@@ -28,18 +28,6 @@
 
     <div class="row">
         <div class="col-md-12">
-
-            @if (session()->has('pesan'))
-            <div class="alert alert-success alert-dismissible show fade">
-                <div class="alert-body">
-                    <button class="close" data-dismiss="alert">
-                        <span>×</span>
-                    </button>
-                    {{ session()->get('pesan') }}
-                </div>
-            </div>
-            @endif
-
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
