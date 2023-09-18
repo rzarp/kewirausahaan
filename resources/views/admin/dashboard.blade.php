@@ -41,4 +41,81 @@
         </div>
     </div>
 </div>
+
+
+<div class="page-inner mt--5">
+    <div class="row mt--2">
+        <div class="col-md-12">
+            <div class="card full-height">
+                <div class="card-body">
+                    <div class="card-title">Overall statistics</div>
+                    <table class="table table-bordered data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">nama rasio</th>
+                                <th scope="col">sumber</th>
+                                <th scope="col">nama sumber</th>
+                                <th scope="col">id formula</th>
+                                <th scope="col">rasio</th>
+                                <th scope="col">cut off data</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 @endsection
+
+@push('script')
+
+<script type="text/javascript">
+    $(function () {
+
+      var table = $('.data-table').DataTable({
+          processing: true,
+          serverSide: true,
+          ajax: "{{ route('dashboard') }}",
+          columns: [
+              {
+                  data: 'DT_RowIndex',
+                  name: 'DT_RowIndex'
+              },
+              {
+                data: 'nama_rasio',
+                name: 'nama_rasio'
+              },
+              {
+                data: 'id_sumber',
+                name: 'id_sumber'
+              },
+              {
+                data: 'sumber',
+                name: 'sumber'
+              },
+              {
+                data: 'id_formula',
+                name: 'id_formula'
+              },
+              {
+                data: 'rasio',
+                name: 'rasio'
+              },
+              {
+                data: 'cut_off_data',
+                name: 'cut_off_data'
+              },
+
+          ]
+      });
+
+    });
+  </script>
+
+  @endpush

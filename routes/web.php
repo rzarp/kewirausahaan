@@ -8,6 +8,7 @@ use App\Http\Controllers\IndikatorController;
 use App\Http\Controllers\SumberController;
 use App\Http\Controllers\FormulaController;
 use App\Http\Controllers\RasioController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,13 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth'])->name('dashboard');
+
+// Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('dashboard');
+
+
 
 require __DIR__.'/auth.php';
 
@@ -36,6 +41,7 @@ Route::prefix('excel')->group(function () {
     Route::get('/import-excel', [ExcelController::class, 'index'])->name('excel.import')->middleware('auth');
 
 });
+
 
 // pengenalan
 Route::prefix('blok1')->middleware('auth')->group(function () {
@@ -63,6 +69,14 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('/restore/user/{id?}', [UserController::class, 'restore'])->name('restore.user');
     Route::get('/delete/user/{id?}', [UserController::class, 'delete'])->name('delete.user');
 });
+
+
+// setting user
+Route::prefix('setting-user')->middleware('auth')->group(function () {
+    Route::get('/edit',[UserController::class,'setting_edit'])->name('setting.edit');
+    Route::any('/update',[UserController::class,'setting_update'])->name('setting.update');
+});
+
 
 
 // indikator

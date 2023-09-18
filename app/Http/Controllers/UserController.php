@@ -33,7 +33,7 @@ class UserController extends Controller
             'id' => Str::uuid()->toString(),
             'name' => 'required',
             'username' => 'required',
-            'email' => 'email',
+            'email' => 'required',
             'password' => 'required',
             'role' => 'required',
         ]);
@@ -102,8 +102,7 @@ class UserController extends Controller
     //         return redirect(route('user.insert'))->with('pesan' , 'Data berhasil disimpan');
     // }
 
-    public function update(Request $request, $id)
-{
+    public function update(Request $request, $id) {
     try {
         $user = User::find($id);
 
@@ -163,5 +162,59 @@ class UserController extends Controller
         }
 
         return redirect(route('trash.user'))->with('pesan' , 'Data berhasil restore');
+    }
+
+
+    public function setting_edit() {
+        return view('admin.user.setting', [
+            'user' => User::findOrFail(auth()->user()->id)
+        ]);
+    }
+
+    public function setting_update(Request $request) {
+
+        // dd($request);
+        $id = auth()->user()->id;
+
+        $request->validate([
+            'name'      => 'required',
+            'username'  => 'required',
+            'email'     => 'required|email',
+            'foto '     => 'image|mimes:jpeg,png,gif|max:3000',
+        ]);
+
+
+        if (isset($request->foto)) {
+            $request->validate ([
+                'foto '         => 'nullable',
+            ]);
+                if($request->hasFile('foto')) {
+                    $extFile = $request->foto->getClientOriginalExtension();
+                    $namaFile = 'foto-'.time().".".$extFile;
+                    $foto = $request->foto->move('img/user', $namaFile);
+                }
+        }
+
+        $data = [
+            'name' => $request->get('name'),
+            'username' => $request->get('username'),
+            'email' => $request->get('email'),
+            'foto'  => (isset($foto) ? $foto : auth()->user()->foto)
+
+        ];
+
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->input('password'));
+        }
+
+        $user = User::where('id', $id)->update($data);
+
+        if ($user) {
+            Alert::success('Success', 'Data Berhasil Simpan');
+        } else {
+            Alert::error('Error', 'Data Tidak Tersimpan');
+        }
+
+        return redirect()->back();
     }
 }
