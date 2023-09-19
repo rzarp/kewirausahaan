@@ -14353,7 +14353,15 @@ body {
 .bg-secondary-gradient {
   background: #6861CE !important;
   background: -webkit-linear-gradient(legacy-direction(-45deg), #2A20AC, #6861CE) !important;
-  background: linear-gradient(-45deg, #2A20AC, #6861CE) !important; }
+  background: linear-gradient(-45deg, #2A20AC, #6861CE) !important;
+}
+
+.bg-login {
+    background-image: url('assets/img/umkm.jpg') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 
 .bg-info-gradient {
   background: #48ABF7 !important;

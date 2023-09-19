@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -52,4 +52,50 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}
+
+
+
+@extends('admin.base-login')
+@section('login')
+@section('title', 'Login')
+<body class="login">
+	<div class="wrapper wrapper-login wrapper-login-full p-0">
+		<div class="login-aside w-50 d-flex flex-column align-items-center justify-content-center text-center" style="background-image: url('assets/img/umkm.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+			<h1 class="title fw-bold text-white mb-3">Rasio Kewirausahaan</h1>
+			<p class="subtitle fw-bold text-white op-7">Kementerian Koperasi Dan UMKM</p>
+		</div>
+		<div class="login-aside w-50 d-flex align-items-center justify-content-center bg-white">
+			<div class="container container-login container-transparent animated fadeIn">
+				<h3 class="text-center">Sign In To Admin</h3>
+                <form method="POST" action="{{ route('login') }}">
+                @csrf
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="username" class="placeholder"><b>Username</b></label>
+                            <input id="username" name="username" type="text" class="form-control"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="placeholder"><b>Password</b></label>
+                            <div class="position-relative">
+                                <input id="password" name="password" type="password" class="form-control" autocomplete="current-password" required>
+                                <div class="show-password">
+                                    <i class="icon-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-action-d-flex mb-3">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="rememberme">
+                                <label class="custom-control-label m-0" for="rememberme">Remember Me</label>
+                            </div>
+                            <button class="btn btn-secondary col-md-5 float-right mt-3 mt-sm-0 fw-bold">Login</button>
+                        </div>
+
+                    </div>
+                </form>
+			</div>
+		</div>
+	</div>
+</body>
+@endsection

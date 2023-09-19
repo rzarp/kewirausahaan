@@ -25,6 +25,7 @@ class DashboardController extends Controller
 
         $user = User::count();
         $rasio = Rasio::count();
+        $chart = Rasio::all();
 
         if ($request->ajax()) {
             // $data = DB::table('formulas')->selectRaw('id, nama_formula, concat(uppper, "|", lower) as formula, created_at, updated_at')->where('deleted_at','=',null)->get();
@@ -60,7 +61,7 @@ class DashboardController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('admin.dashboard',compact('user','rasio'));
+        return view('admin.dashboard',compact('user','rasio','chart'));
     }
 
 

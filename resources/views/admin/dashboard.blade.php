@@ -9,8 +9,8 @@
                 <h5 class="text-white op-7 mb-2">Kementrian Koperasi dan UMKM</h5>
             </div>
             <div class="ml-md-auto py-2 py-md-0">
-                <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
-                <a href="#" class="btn btn-secondary btn-round">Add Customer</a>
+                {{-- <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a> --}}
+                <a href="{{route('rasio.create')}}" class="btn btn-secondary btn-round">Add data Rasio</a>
             </div>
         </div>
     </div>
@@ -89,6 +89,14 @@
     </div>
 </div>
 
+<div class="page-inner mt--5">
+    <div class="row mt--2">
+        <div class="col-md-12">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -138,5 +146,43 @@
 
     });
   </script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var data = @json($chart);
+
+    var ratios = data.map(function(item) {
+        return item.rasio;
+    });
+
+    var cutOffData = data.map(function(item) {
+        return item.cut_off_data;
+    });
+
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: cutOffData,
+            datasets: [{
+                label: 'Rasio',
+                data: ratios,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
 
   @endpush
