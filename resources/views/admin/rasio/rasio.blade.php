@@ -30,21 +30,25 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex align-items-right">
-                        <div class="card-title">Rasio</div>
-                        <a href="{{route('rasio.create')}}" class="btn btn-primary btn-sm btn-round ml-auto">
-                            <i class="fa fa-plus"></i>
-                            Insert data
-                        </a>
-                        <a href="{{route('rasio.export')}}" class="btn btn-secondary btn-sm btn-round ml-auto">
-                            <i class="fa fa-plus"></i>
-                            Download
-                        </a>
+                    <div class="d-flex align-items-center">
+                        <div class="card-title">Rasio </div>  &nbsp
+                        <div class="d-flex align-items-center">
+                            <a href="{{route('rasio.create')}}" class="btn btn-primary btn-sm btn-round ml-auto">
+                                <i class="fa fa-plus"></i>
+                                Insert data
+                            </a> &nbsp
+                            <a href="{{route('rasio.export')}}" class="btn btn-success btn-sm btn-round ml-auto">
+                                <i class="fa fa-download"></i>
+                                Download
+                            </a>
+                        </div>
+
+
 
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered data-table">
+                    <table class="table table-responsive data-table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>

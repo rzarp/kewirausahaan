@@ -70,7 +70,7 @@
                         <div class="card-title">Rasio</div>
                     </div>
                     <br>
-                    <table class="table table-bordered data-table">
+                    <table class="table table-responsive data-table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>

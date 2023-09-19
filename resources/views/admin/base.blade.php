@@ -87,6 +87,7 @@
                 @yield('rasio')
                 @yield('rasio-create')
                 @yield('rasio-edit')
+                @yield('rasio-view')
                 @yield('setting')
 			</div>
 			<footer class="footer">

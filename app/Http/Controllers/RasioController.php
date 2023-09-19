@@ -173,8 +173,9 @@ class RasioController extends Controller
                         $btn =
 
                            '
-                           <a href="'.route('rasio.edit',['id' => $row->id]).'" class="btn btn-primary btn-action mr-1 edit-confirm" data-toggle="tooltip" title="" data-original-title="Edit" ><i class="fas fa-pencil-alt"></i></a>
-                           <a href="'.route('rasio.destroy',['id' => $row->id]).'" class="btn btn-danger btn-action trigger--fire-modal-2 delete-confirm" data-toggle="tooltip" title=""data-original-title="Delete"><i class="fas fa-trash"></i></a>
+                           <a href="'.route('rasio.edit',['id' => $row->id]).'" class="btn btn-primary btn-sm btn-action mr-1 edit-confirm" data-toggle="tooltip" title="" data-original-title="Edit" ><i class="fas fa-pencil-alt"></i></a>
+                           <a href="'.route('rasio.view',['id' => $row->id]).'" class="btn btn-success btn-sm btn-action mr-1 view-confirm" data-toggle="tooltip" title="" data-original-title="View" ><i class="fas fa-eye"></i></a>
+                           <a href="'.route('rasio.destroy',['id' => $row->id]).'" class="btn btn-danger btn-sm btn-action trigger--fire-modal-2 delete-confirm" data-toggle="tooltip" title=""data-original-title="Delete"><i class="fas fa-trash"></i></a>
                            ';
                         return $btn;
                     })
@@ -194,6 +195,17 @@ class RasioController extends Controller
         $rasio->lower = json_decode($rasio->lower);
 
         return view('admin.rasio.rasio-edit', compact('rasio','sumber', 'formula'));
+    }
+
+    public function view($id)
+    {
+        $sumber = Sumber::all();
+        $formula = Formula::all();
+        $rasio = Rasio::find($id);
+        $rasio->upper = json_decode($rasio->upper);
+        $rasio->lower = json_decode($rasio->lower);
+
+        return view('admin.rasio.rasio-view', compact('rasio','sumber', 'formula'));
     }
 
 

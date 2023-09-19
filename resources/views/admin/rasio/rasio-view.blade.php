@@ -1,6 +1,6 @@
 @extends('admin.base')
-@section('rasio-edit')
-@section('title','Rasio edit')
+@section('rasio-view')
+@section('title','rasio view')
 <div class="page-inner">
     <div class="page-header">
         <h4 class="page-title">Rasio</h4>
@@ -20,7 +20,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">formula</a>
+                <a href="#">rasio</a>
             </li>
         </ul>
     </div>
@@ -56,11 +56,11 @@
                 <div class="card-body">
                         <div class="form-group">
                             <label for="formula">Nama Rasio</label>
-                            <input type="text" class="form-control" name="nama_rasio" value="{{ old('nama_rasio', $rasio->nama_rasio) }}">
+                            <input type="text" class="form-control" name="nama_rasio" value="{{ old('nama_rasio', $rasio->nama_rasio) }}" disabled>
                         </div>
                         <div class="form-group">
                             <label for="formula">Nama Sumber</label>
-                            <select name="id_sumber" class="form-control" id="">
+                            <select name="id_sumber" class="form-control" id="" disabled>
                                 @foreach($sumber as $i)
                                 <option value="{{$i->id}}" {{old('id_sumber')==$i->id ? 'selected':''}}>{{$i->sumber}}</option>
                                 @endforeach
@@ -69,12 +69,12 @@
 
                         <div class="form-group">
                             <label for="formula">Sumber</label>
-                            <input type="text" class="form-control" name="sumber" value="{{ old('sumber', $rasio->sumber) }}">
+                            <input type="text" class="form-control" name="sumber" value="{{ old('sumber', $rasio->sumber) }}"disabled>
                         </div>
 
                         <div class="form-group">
                             <label for="formula">Cut Off</label>
-                            <input type="date" class="form-control" name="cut_off_date" value="{{ old('cut_off_date', $rasio->cut_off_data) }}">
+                            <input type="date" class="form-control" name="cut_off_date" value="{{ old('cut_off_date', $rasio->cut_off_data) }}"disabled>
                         </div>
 
                         <div class="form-group">
@@ -97,10 +97,6 @@
                             <div class="form-group" id="lower-area">
                                 <label for="formula">Rasio - (Lower)</label>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <button class="btn btn-danger btn-sm" type="reset" value="Reset">Reset</button>
-                            <button class="btn btn-primary btn-sm" type="submit">Input</button>
                         </div>
                     </form>
                 </div>
@@ -135,7 +131,7 @@ $( document ).ready(function() {
                     upperElement += '            <label for="formula">'+v+'</label>';
                     upperElement += '        </div>';
                     upperElement += '        <div class="w-25">';
-                        upperElement += '            <input type="number" class="form-control" name="upper[]" value="'+upperValue[i]+'" >';
+                        upperElement += '            <input type="number" class="form-control" name="upper[]" value="'+upperValue[i]+'" disabled >';
                         upperElement += '        </div>';
                     upperElement += '    </div>';
 
@@ -155,7 +151,7 @@ $( document ).ready(function() {
                     lowerElement += '            <label for="formula">'+v+'</label>';
                     lowerElement += '        </div>';
                     lowerElement += '        <div class="w-25">';
-                        lowerElement += '            <input type="number" class="form-control" name="lower[]" value="'+lowerValue[i]+'" >';
+                        lowerElement += '            <input type="number" class="form-control" name="lower[]" value="'+lowerValue[i]+'" disabled >';
                         lowerElement += '        </div>';
                     lowerElement += '    </div>';
 

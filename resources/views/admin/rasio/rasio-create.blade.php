@@ -20,7 +20,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">formula</a>
+                <a href="#">rasio</a>
             </li>
         </ul>
     </div>
@@ -44,7 +44,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div class="card-title">Rasio</div>
-                        <a href="{{route('formula.all')}}" class="btn btn-primary btn-sm btn-round ml-auto">
+                        <a href="{{route('rasio.all')}}" class="btn btn-primary btn-sm btn-round ml-auto">
                             <i class="fa fa-arrow-left"></i>
                                 kembali
                         </a>

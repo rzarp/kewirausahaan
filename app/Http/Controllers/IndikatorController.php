@@ -49,8 +49,8 @@ class IndikatorController extends Controller
                         $btn =
 
                            '
-                           <a href="'.route('indikator.edit',['id' => $row->id]).'" class="btn btn-primary btn-action mr-1 edit-confirm" data-toggle="tooltip" title="" data-original-title="Edit" ><i class="fas fa-pencil-alt"></i></a>
-                           <a href="'.route('indikator.destroy',['id' => $row->id]).'" class="btn btn-danger btn-action trigger--fire-modal-2 delete-confirm" data-toggle="tooltip" title=""data-original-title="Delete"><i class="fas fa-trash"></i></a>
+                           <a href="'.route('indikator.edit',['id' => $row->id]).'" class="btn btn-sm btn-primary btn-action mr-1 edit-confirm" data-toggle="tooltip" title="" data-original-title="Edit" ><i class="fas fa-pencil-alt"></i></a>
+                           <a href="'.route('indikator.destroy',['id' => $row->id]).'" class="btn btn-sm btn-danger btn-action trigger--fire-modal-2 delete-confirm" data-toggle="tooltip" title=""data-original-title="Delete"><i class="fas fa-trash"></i></a>
                            ';
                         return $btn;
                     })

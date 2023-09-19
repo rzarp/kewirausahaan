@@ -120,6 +120,7 @@ Route::prefix('rasio')->middleware('auth')->group(function () {
     Route::get('/show', [RasioController::Class, 'show'])->name('rasio.show');
     Route::get('/create', [RasioController::class, 'create'])->name('rasio.create');
     Route::post('/post', [RasioController::class, 'store'])->name('rasio.post');
+    Route::get('/view/{id}',[RasioController::class,'view'])->name('rasio.view');
     Route::get('/edit/{id}',[RasioController::class,'edit'])->name('rasio.edit');
     Route::put('/edit/{id}',[RasioController::class,'update'])->name('rasio.update');
     Route::get('/delete/{id}',[RasioController::class,'destroy'])->name('rasio.destroy');

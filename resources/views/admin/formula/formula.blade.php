@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered data-table">
+                    <table class="table table-striped data-table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
