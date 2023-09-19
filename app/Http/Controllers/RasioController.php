@@ -13,6 +13,9 @@ use DB;
 use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use App\Exports\RasioExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class RasioController extends Controller
 {
@@ -286,5 +289,9 @@ class RasioController extends Controller
             Alert::error('Error', 'Data Tidak terhapus');
         }
         return redirect()->back();
+    }
+
+    public function export() {
+        return Excel::download(new RasioExport, 'rasio.xlsx');
     }
 }

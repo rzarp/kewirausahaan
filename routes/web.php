@@ -112,6 +112,7 @@ Route::prefix('formula')->middleware('auth')->group(function () {
     Route::get('/delete/{id}',[FormulaController::class,'destroy'])->name('formula.destroy');
 });
 
+// rasio
 Route::prefix('rasio')->middleware('auth')->group(function () {
     Route::get('/get', [RasioController::Class, 'index'])->name('rasio.all');
     Route::get('/formulaById/{id?}', [RasioController::Class, 'getFormulaById'])->name('rasio.formulaId');
@@ -122,5 +123,10 @@ Route::prefix('rasio')->middleware('auth')->group(function () {
     Route::get('/edit/{id}',[RasioController::class,'edit'])->name('rasio.edit');
     Route::put('/edit/{id}',[RasioController::class,'update'])->name('rasio.update');
     Route::get('/delete/{id}',[RasioController::class,'destroy'])->name('rasio.destroy');
+
+    // export
+    Route::get('/export',[RasioController::class,'export'])->name('rasio.export');
+
+
 });
 

@@ -6,6 +6,7 @@ use App\Models\Rasio;
 use App\Models\Indikator;
 use App\Models\Sumber;
 use App\Models\Formula;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use DataTables;
@@ -16,8 +17,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {
+
+
+
     public function index(Request $request)
     {
+
+        $user = User::count();
+        $rasio = Rasio::count();
+
         if ($request->ajax()) {
             // $data = DB::table('formulas')->selectRaw('id, nama_formula, concat(uppper, "|", lower) as formula, created_at, updated_at')->where('deleted_at','=',null)->get();
             $data = Rasio::all();
@@ -52,6 +60,8 @@ class DashboardController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('admin.dashboard');
+        return view('admin.dashboard',compact('user','rasio'));
     }
+
+
 }
