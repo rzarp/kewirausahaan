@@ -67,6 +67,8 @@
 		</div>
 		<div class="login-aside w-50 d-flex align-items-center justify-content-center bg-white">
 			<div class="container container-login container-transparent animated fadeIn">
+                <img src="{{asset('assets/img/kemenkop.png')}}"  width="300" height="80" alt="navbar brand" class="navbar-brand center">
+                <br><br>
 				<h3 class="text-center">Sign In To Admin</h3>
                 <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -89,7 +91,7 @@
                                 <input type="checkbox" class="custom-control-input" id="rememberme">
                                 <label class="custom-control-label m-0" for="rememberme">Remember Me</label>
                             </div>
-                            <button class="btn btn-secondary col-md-5 float-right mt-3 mt-sm-0 fw-bold">Login</button>
+                            <button class="btn btn-success col-md-5 float-right mt-3 mt-sm-0 fw-bold">Login</button>
                         </div>
 
                     </div>

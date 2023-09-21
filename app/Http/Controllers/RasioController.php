@@ -14,6 +14,7 @@ use Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Exports\RasioExport;
+use App\Exports\RasioExportID;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -176,6 +177,7 @@ class RasioController extends Controller
                            <a href="'.route('rasio.edit',['id' => $row->id]).'" class="btn btn-primary btn-sm btn-action mr-1 edit-confirm" data-toggle="tooltip" title="" data-original-title="Edit" ><i class="fas fa-pencil-alt"></i></a>
                            <a href="'.route('rasio.view',['id' => $row->id]).'" class="btn btn-success btn-sm btn-action mr-1 view-confirm" data-toggle="tooltip" title="" data-original-title="View" ><i class="fas fa-eye"></i></a>
                            <a href="'.route('rasio.destroy',['id' => $row->id]).'" class="btn btn-danger btn-sm btn-action trigger--fire-modal-2 delete-confirm" data-toggle="tooltip" title=""data-original-title="Delete"><i class="fas fa-trash"></i></a>
+                           <a href="'.route('rasio.export_id',['id' => $row->id]).'" class="btn btn-primary btn-sm btn-action" data-toggle="tooltip" title=""data-original-title="Delete"><i class="fas fa-download"></i></a>
                            ';
                         return $btn;
                     })
@@ -305,5 +307,8 @@ class RasioController extends Controller
 
     public function export() {
         return Excel::download(new RasioExport, 'rasio.xlsx');
+    }
+    public function export_id($id) {
+        return Excel::download(new RasioExportID($id), 'rasio.xlsx');
     }
 }

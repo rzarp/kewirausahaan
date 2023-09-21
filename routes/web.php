@@ -127,6 +127,7 @@ Route::prefix('rasio')->middleware('auth')->group(function () {
 
     // export
     Route::get('/export',[RasioController::class,'export'])->name('rasio.export');
+    Route::get('/export/{id}',[RasioController::class,'export_id'])->name('rasio.export_id');
 
 
 });

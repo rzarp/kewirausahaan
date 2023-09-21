@@ -19,7 +19,7 @@
 
 <div class="page-inner mt--5">
     <div class="row mt--2">
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <div class="card card-stats card-round">
                 <div class="card-body">
                     <div class="row">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">User</p>
+                                <p class="card-category">Jumlah User</p>
                                 <h4 class="card-title">{{ $user }}</h4>
 
                             </div>
@@ -38,19 +38,19 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
+        </div> --}}
+        <div class="col-md-12">
             <div class="card card-stats card-round">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-5">
                             <div class="icon-big text-center">
-                                <i class="flaticon-user text-primary"></i>
+                                <i class="flaticon-technology text-primary"></i>
                             </div>
                         </div>
                         <div class="col-7 col-stats">
                             <div class="numbers">
-                                <p class="card-category">Rasio</p>
+                                <p class="card-category">Jumlah Rasio</p>
                                 <h4 class="card-title">{{ $rasio }}</h4>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="card-title">Rasio</div>
                     </div>
                     <br>
-                    <table class="table table-responsive data-table">
+                    <table class="table table-striped-responsive data-table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -92,10 +92,20 @@
 <div class="page-inner mt--5">
     <div class="row mt--2">
         <div class="col-md-12">
-            <canvas id="myChart"></canvas>
+            <div class="card full-height">
+                <div class="card-body">
+                    <div class="card-header">
+                        <div class="card-title">Rasio</div>
+                    </div>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+
 
 
 
