@@ -60,7 +60,7 @@
 
                         <div class="upper">
                             <div class="form-group">
-                                <label for="formula">Formula - (Upper)</label>
+                                <label for="formula">Formula - (Pembilang)</label>
                                 <div class="d-flex">
                                     <div class="w-75">
                                         <select name="upper[]" class="form-control" id="">
@@ -84,7 +84,7 @@
 
                         <div class="lower">
                             <div class="form-group">
-                                <label for="formula">Formula - (Lower)</label>
+                                <label for="formula">Formula - (Penyebut)</label>
                                 <div class="d-flex">
                                     <div class="w-75">
                                         <select name="lower[]" class="form-control" id="exampleFormControlSelect2">
@@ -133,22 +133,41 @@ $( document ).ready(function() {
     upperOp.change(function(event) {
         var vtarget = event.target.value;
         console.log(vtarget);
+        var ini = $('.upper-op').index(event.target);
+        var max = $('.upper-op').length;
         if (vtarget != 'none') {
-            console.log(upperParent[0]);
+            if ($('.upper-op')[ini +1]) {
+                console.log($('.upper-op')[ini +1]);
+                $('.upper-op')[ini + 1].parent().parent().remove();
+            }
+
             upperParent.clone(true).appendTo(upperParent.parent());
         }else{
-            $('.upper-op').last().parent().parent().remove();
+            while (max > ini) {
+                console.log($('.upper-op').eq(max));
+                $('.upper-op').eq(max).parent().parent().remove();
+                max--;
+            }
         }
     });
 
     lowerOp.change(function(event) {
         var vtarget = event.target.value;
         console.log(vtarget);
+        var ini = $('.lower-op').index(event.target);
+        var max = $('.lower-op').length;
         if (vtarget != 'none') {
-            console.log(lowerParent[0]);
+            if ($('.lower-op')[ini +1]) {
+                console.log($('.lower-op')[ini +1]);
+                $('.lower-op')[ini + 1].parent().parent().remove();
+            }
             lowerParent.clone(true).appendTo(lowerParent.parent());
         }else{
-            $('.lower-op').last().parent().parent().remove();
+            while (max > ini) {
+                console.log($('.upper-op').eq(max));
+                $('.lower-op').eq(max).parent().parent().remove();
+                max--;
+            }
         }
     });
 });

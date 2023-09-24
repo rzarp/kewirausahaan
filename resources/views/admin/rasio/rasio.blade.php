@@ -101,7 +101,17 @@
               },
               {
                 data: 'rasio',
-                name: 'rasio'
+                name: 'rasio',
+                    render: function (data, type, row) {
+                    if (type === 'display') {
+                        if (!isNaN(data)) { // Check if data is numeric
+                            return parseFloat(data).toFixed(3) + '%';
+                        } else {
+                            return 'N/A'; // or some other error message
+                        }
+                    }
+                    return data;
+                }
               },
               {
                 data: 'cut_off_data',

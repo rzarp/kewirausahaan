@@ -69,7 +69,7 @@
 			<div class="container container-login container-transparent animated fadeIn">
                 <img src="{{asset('assets/img/kemenkop.png')}}"  width="300" height="80" alt="navbar brand" class="navbar-brand center">
                 <br><br>
-				<h3 class="text-center">Sign In To Admin</h3>
+				<h3 class="text-center">Silahkan Login</h3>
                 <form method="POST" action="{{ route('login') }}">
                 @csrf
                     <div class="login-form">

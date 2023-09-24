@@ -112,7 +112,7 @@
 						</ul>
 					</nav>
 					<div class="copyright ml-auto">
-						2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="http://www.themekita.com">ThemeKita</a>
+						2023 <a href="#">Kementrian Koperasi dan UMKM </a>
 					</div>
 				</div>
 			</footer>

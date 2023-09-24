@@ -43,17 +43,20 @@
             <div class="card card-stats card-round">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-5">
+                        {{-- <div class="col-5">
                             <div class="icon-big text-center">
                                 <i class="flaticon-technology text-primary"></i>
                             </div>
-                        </div>
-                        <div class="col-7 col-stats">
-                            <div class="numbers">
-                                <p class="card-category">Jumlah Rasio</p>
-                                <h4 class="card-title">{{ $rasio }}</h4>
+                        </div> --}}
+                        {{-- {{ dd($information2) }} --}}
+                        @foreach ($information1 as $info1)
+                            <div class="col col-stats">
+                                <div class="numbers">
+                                    <p class="card-category">Jumlah Rasio {{ $info1->nama_rasio }}</p>
+                                    <h4 class="card-title">{{ $info1->total }}</h4>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -144,7 +147,17 @@
               },
               {
                 data: 'rasio',
-                name: 'rasio'
+                name: 'rasio',
+                    render: function (data, type, row) {
+                    if (type === 'display') {
+                        if (!isNaN(data)) { // Check if data is numeric
+                            return parseFloat(data).toFixed(3) + '%';
+                        } else {
+                            return 'N/A'; // or some other error message
+                        }
+                    }
+                    return data;
+                }
               },
               {
                 data: 'cut_off_data',
@@ -163,6 +176,59 @@
     var ctx = document.getElementById('myChart').getContext('2d');
     var data = @json($chart);
 
+
+    // var labels = data.map(function(item) {
+    //     // Ubah format tanggal ke "tanggal-bulan-tahun"
+    //     var cutOffData = new Date(item.cut_off_data);
+    //     var formattedCutOffData = cutOffData.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+
+    //     return formattedCutOffData + " - " + item.nama_rasio;
+    // });
+
+    var ratios = data.map(function(item) {
+        return item.rasio;
+    });
+
+    var cutOffData = data.map(function(item) {
+        return item.cut_off_data;
+    });
+
+    var formulas = @json($formulas).filter(function(f) {
+        return;
+    });
+
+    console.log( @json($formulas));
+
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+            datasets: @json($formulas)
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 100
+                }
+            }
+        }
+    });
+</script>
+
+
+{{-- <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var data = @json($chart);
+
+    var labels = data.map(function(item) {
+        // Ubah format tanggal ke "tanggal-bulan-tahun"
+        var cutOffData = new Date(item.cut_off_data);
+        var formattedCutOffData = cutOffData.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+
+        return formattedCutOffData + " - " + item.nama_rasio;
+    });
+
     var ratios = data.map(function(item) {
         return item.rasio;
     });
@@ -174,9 +240,9 @@
     var chart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: cutOffData,
+            labels: labels,
             datasets: [{
-                label: 'Rasio',
+                label: 'Total Rasio',
                 data: ratios,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
@@ -191,7 +257,34 @@
             }
         }
     });
-</script>
+
+    // Menangani perubahan filter
+    var filterElement = document.getElementById('namaRasioFilter');
+    filterElement.addEventListener('change', function() {
+        var selectedValue = filterElement.value;
+        var filteredData = data.filter(function(item) {
+            return selectedValue === '' || item.nama_rasio === selectedValue;
+        });
+
+        // Perbarui grafik dengan data yang difilter
+        var filteredLabels = filteredData.map(function(item) {
+            var cutOffData = new Date(item.cut_off_data);
+            var formattedCutOffData = cutOffData.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+            return formattedCutOffData + " - " + item.nama_rasio;
+        });
+
+        var filteredRatios = filteredData.map(function(item) {
+            return item.rasio;
+        });
+
+        chart.data.labels = filteredLabels;
+        chart.data.datasets[0].data = filteredRatios;
+        chart.update();
+    });
+</script> --}}
+
+
+
 
 
 

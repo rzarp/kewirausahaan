@@ -60,6 +60,7 @@
                         <div class="form-group">
                             <label for="formula">Nama Sumber</label>
                             <select name="id_sumber" class="form-control" id="">
+                                <option value="none">-- Pilih --</option>
                                 @foreach($sumber as $i)
                                 <option value="{{$i->id}}" {{old('id_sumber')==$i->id ? 'selected':''}}>{{$i->sumber}}</option>
                                 @endforeach
@@ -79,6 +80,7 @@
                         <div class="form-group">
                             <label for="formula">Nama Formula</label>
                             <select name="id_formula" class="form-control" id="formula">
+                                <option value="none">-- Pilih --</option>
                                 @foreach($formula as $i)
                                 <option value="{{$i->id}}" {{old('id_formula')==$i->id ? 'selected':''}}>{{$i->nama_formula}}</option>
                                 @endforeach
@@ -125,6 +127,10 @@ $( document ).ready(function() {
     formula.change(function(event) {
         var upperOp = $('#upper-area');
         var lowerOp = $('#lower-area');
+
+        upperOp.html("");
+        lowerOp.html("");
+
         id = event.target.value;
         var url = `{{ route('rasio.formulaId') }}`+'/'+id;
         console.log(event.target.value);

@@ -206,6 +206,7 @@ class RasioController extends Controller
         $rasio = Rasio::find($id);
         $rasio->upper = json_decode($rasio->upper);
         $rasio->lower = json_decode($rasio->lower);
+        // return response()->json($rasio->upperName(), 200);
 
         return view('admin.rasio.rasio-view', compact('rasio','sumber', 'formula'));
     }
