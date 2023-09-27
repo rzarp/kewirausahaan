@@ -60,10 +60,10 @@
 @section('login')
 @section('title', 'Login')
 <body class="login">
-	<div class="wrapper wrapper-login wrapper-login-full p-0">
-		<div class="login-aside w-50 d-flex flex-column align-items-center justify-content-center text-center" style="background-image: url('assets/img/umkm.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
-			<h1 class="title fw-bold text-white mb-3">Rasio Kewirausahaan</h1>
-			<p class="subtitle fw-bold text-white op-7">Kementerian Koperasi Dan UMKM</p>
+	<div class="wrapper wrapper-login wrapper-login-full p-0" style=" background-image: url('assets/img/umkm-3.jpg');background-size: cover;background-repeat: no-repeat;background-position: center center;">
+		<div class="login-aside w-50 d-flex flex-column align-items-center justify-content-center text-center"  >
+			<h1 class="title fw-bold text-light mb-3">Rasio Kewirausahaan</h1>
+			<p class="subtitle fw-bold text-light op-7">Kementerian Koperasi Dan UMKM</p>
 		</div>
 		<div class="login-aside w-50 d-flex align-items-center justify-content-center bg-white">
 			<div class="container container-login container-transparent animated fadeIn">
@@ -101,3 +101,8 @@
 	</div>
 </body>
 @endsection
+
+
+@push('script')
+
+@endpush

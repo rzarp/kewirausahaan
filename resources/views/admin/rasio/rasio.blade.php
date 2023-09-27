@@ -48,20 +48,23 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-responsive data-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">nama rasio</th>
-                                <th scope="col">sumber</th>
-                                <th scope="col">nama sumber</th>
-                                <th scope="col">id formula</th>
-                                <th scope="col">rasio</th>
-                                <th scope="col">cut off data</th>
-                                <th scope="col">action</th>
-                            </tr>
-                        </thead>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table data-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">nama rasio</th>
+                                    <th scope="col">sumber</th>
+                                    <th scope="col">nama sumber</th>
+                                    <th scope="col">id formula</th>
+                                    <th scope="col">rasio</th>
+                                    <th scope="col">cut off data</th>
+                                    <th scope="col">action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -99,19 +102,23 @@
                 data: 'id_formula',
                 name: 'id_formula'
               },
+            //   {
+            //     data: 'rasio',
+            //     name: 'rasio',
+            //         render: function (data, type, row) {
+            //         if (type === 'display') {
+            //             if (!isNaN(data)) { // Check if data is numeric
+            //                 return parseFloat(data).toFixed(3) + '%';
+            //             } else {
+            //                 return 'N/A'; // or some other error message
+            //             }
+            //         }
+            //         return data;
+            //     }
+            //   },
               {
                 data: 'rasio',
-                name: 'rasio',
-                    render: function (data, type, row) {
-                    if (type === 'display') {
-                        if (!isNaN(data)) { // Check if data is numeric
-                            return parseFloat(data).toFixed(3) + '%';
-                        } else {
-                            return 'N/A'; // or some other error message
-                        }
-                    }
-                    return data;
-                }
+                name: 'rasio'
               },
               {
                 data: 'cut_off_data',

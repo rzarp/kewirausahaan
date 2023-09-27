@@ -17,9 +17,9 @@
 </div>
 
 
-<div class="page-inner mt--5">
+{{-- <div class="page-inner mt--5">
     <div class="row mt--2">
-        {{-- <div class="col-md-6">
+        <div class="col-md-6">
             <div class="card card-stats card-round">
                 <div class="card-body">
                     <div class="row">
@@ -38,17 +38,13 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         <div class="col-md-12">
             <div class="card card-stats card-round">
                 <div class="card-body">
                     <div class="row">
-                        {{-- <div class="col-5">
-                            <div class="icon-big text-center">
-                                <i class="flaticon-technology text-primary"></i>
-                            </div>
-                        </div> --}}
-                        {{-- {{ dd($information2) }} --}}
+
+                        {{ dd($information2) }}
                         @foreach ($information1 as $info1)
                             <div class="col col-stats">
                                 <div class="numbers">
@@ -59,6 +55,30 @@
                         @endforeach
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<div class="page-inner mt--5">
+    <div class="row mt--2">
+        <div class="col-md-12">
+            <div class="row">
+                @foreach ($information1 as $info1)
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card p-3">
+                        <div class="d-flex align-items-center">
+                            <span class="stamp stamp-md bg-secondary mr-3">
+                                <i class="fa fa-dollar-sign"></i>
+                            </span>
+                            <div>
+                                <h5 class="mb-1"><b><a href="#"><small>{{ $info1->nama_rasio }}</small></a></b></h5>
+                                <small class="text-muted">{{ $info1->total }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </div>

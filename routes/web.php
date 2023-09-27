@@ -22,7 +22,7 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('landing');
 });
 
 

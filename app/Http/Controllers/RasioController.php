@@ -174,10 +174,10 @@ class RasioController extends Controller
                         $btn =
 
                            '
-                           <a href="'.route('rasio.edit',['id' => $row->id]).'" class="btn btn-primary btn-sm btn-action mr-1 edit-confirm" data-toggle="tooltip" title="" data-original-title="Edit" ><i class="fas fa-pencil-alt"></i></a>
-                           <a href="'.route('rasio.view',['id' => $row->id]).'" class="btn btn-success btn-sm btn-action mr-1 view-confirm" data-toggle="tooltip" title="" data-original-title="View" ><i class="fas fa-eye"></i></a>
+                           <a href="'.route('rasio.edit',['id' => $row->id]).'" class="btn btn-primary btn-sm btn-action edit-confirm" data-toggle="tooltip" title="" data-original-title="Edit" ><i class="fas fa-pencil-alt"></i></a>
+                           <a href="'.route('rasio.view',['id' => $row->id]).'" class="btn btn-success btn-sm btn-action view-confirm" data-toggle="tooltip" title="" data-original-title="View" ><i class="fas fa-eye"></i></a>
                            <a href="'.route('rasio.destroy',['id' => $row->id]).'" class="btn btn-danger btn-sm btn-action trigger--fire-modal-2 delete-confirm" data-toggle="tooltip" title=""data-original-title="Delete"><i class="fas fa-trash"></i></a>
-                           <a href="'.route('rasio.export_id',['id' => $row->id]).'" class="btn btn-primary btn-sm btn-action" data-toggle="tooltip" title=""data-original-title="Delete"><i class="fas fa-download"></i></a>
+                           <a href="'.route('rasio.export_id',['id' => $row->id]).'" class="btn btn-primary btn-sm btn-action mt-1 download-confirm" data-toggle="tooltip" title=""data-original-title="Delete"><i class="fas fa-download"></i></a>
                            ';
                         return $btn;
                     })
