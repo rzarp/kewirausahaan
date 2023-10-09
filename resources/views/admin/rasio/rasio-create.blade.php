@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="formula">Sumber</label>
+                            <label for="formula">Cutt Of data</label>
                             <input type="date" class="form-control" name="cut_off_date">
                         </div>
 
@@ -89,13 +89,13 @@
 
                         <div>
                             <div class="form-group" id="upper-area">
-                                <label for="formula">Rasio - (Upper)</label>
+                                <label for="formula">Rasio - (Pembilang)</label>
                             </div>
                         </div>
 
                         <div>
                             <div class="form-group" id="lower-area">
-                                <label for="formula">Rasio - (Lower)</label>
+                                <label for="formula">Rasio - (Penyebut)</label>
                             </div>
                         </div>
 
@@ -146,7 +146,7 @@ $( document ).ready(function() {
                         upperElement += '            <label for="formula">'+v+'</label>';
                         upperElement += '        </div>';
                         upperElement += '        <div class="w-25">';
-                            upperElement += '            <input type="text" class="form-control" name="upper[]">';
+                            upperElement += '            <input type="number" step=".01" class="form-control" name="upper[]">';
                             upperElement += '        </div>';
                         upperElement += '    </div>';
 
@@ -168,7 +168,7 @@ $( document ).ready(function() {
                         lowerElement += '            <label for="formula">'+v+'</label>';
                         lowerElement += '        </div>';
                         lowerElement += '        <div class="w-25">';
-                            lowerElement += '            <input type="text" class="form-control" name="lower[]">';
+                            lowerElement += '            <input type="number" step=".01" class="form-control" name="lower[]">';
                             lowerElement += '        </div>';
                         lowerElement += '    </div>';
 

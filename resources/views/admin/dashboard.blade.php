@@ -119,6 +119,19 @@
                 <div class="card-body">
                     <div class="card-header">
                         <div class="card-title">Rasio</div>
+                        <select class="form-control" name="year" id="year">
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                        </select>
                     </div>
                     <canvas id="myChart"></canvas>
                 </div>
@@ -168,16 +181,16 @@
               {
                 data: 'rasio',
                 name: 'rasio',
-                    render: function (data, type, row) {
-                    if (type === 'display') {
-                        if (!isNaN(data)) { // Check if data is numeric
-                            return parseFloat(data).toFixed(3) + '%';
-                        } else {
-                            return 'N/A'; // or some other error message
-                        }
-                    }
-                    return data;
-                }
+                //     render: function (data, type, row) {
+                //     if (type === 'display') {
+                //         if (!isNaN(data)) { // Check if data is numeric
+                //             return parseFloat(data).toFixed(3) + '%';
+                //         } else {
+                //             return 'N/A'; // or some other error message
+                //         }
+                //     }
+                //     return data;
+                // }
               },
               {
                 data: 'cut_off_data',
@@ -204,26 +217,11 @@
 
     //     return formattedCutOffData + " - " + item.nama_rasio;
     // });
-
-    var ratios = data.map(function(item) {
-        return item.rasio;
-    });
-
-    var cutOffData = data.map(function(item) {
-        return item.cut_off_data;
-    });
-
-    var formulas = @json($formulas).filter(function(f) {
-        return;
-    });
-
-    console.log( @json($formulas));
-
     var chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
-            datasets: @json($formulas)
+            datasets: []
         },
         options: {
             scales: {
@@ -234,6 +232,37 @@
             }
         }
     });
+
+    function setChart(year){
+        $.ajax({
+        url: '{{ url("/dataChart") }}'+"/"+year,
+        type: 'GET',
+        success: (res) => {
+            chart.data.datasets = res;
+            chart.update();
+        },
+        error: (err) => {
+            console.log(err);
+        }
+    });
+    }
+
+    setChart(2023)
+
+    var ratios = data.map(function(item) {
+        return item.rasio;
+    });
+
+    var cutOffData = data.map(function(item) {
+        return item.cut_off_data;
+    });
+
+    $(document).ready(() => {
+        $('#year').on('change',(event) => {
+            setChart(event.target.value)
+        });
+    })
+
 </script>
 
 

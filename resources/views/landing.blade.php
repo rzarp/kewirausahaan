@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets-landing/img/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets-landing/img/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets-landing/img/favicons/favicon-16x16.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url('assets/img/logo-kemenkop.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/logo-kemenkop.png') }}">
     <link rel="manifest" href="{{asset('assets-landing/img/favicons/manifest.json')}}">
     <meta name="msapplication-TileImage" content="{{asset('assets-landing/img/favicons/mstile-150x150.png')}}">
     <meta name="theme-color" content="#ffffff">
@@ -49,7 +49,7 @@
         </div>
       </nav>
       <section class="py-0" id="header">
-        <div class="bg-holder d-none d-md-block" style="background-image:url(assets-landing/img/illustrations/hero-header.png);background-position:right top;background-size:contain;"></div>
+        <div class="bg-holder d-none d-md-block" style="background-image:url(assets-landing/img/illustrations/bg-2.jpg);background-position:right top;background-size:contain;"></div>
         <!--/.bg-holder-->
         <div class="bg-holder d-md-none" style="background-image:url(assets-landing/img/illustrations/hero-bg.png);background-position:right top;background-size:contain;"></div>
         <!--/.bg-holder-->
@@ -68,7 +68,7 @@
       <section class="py-5" id="Opportuanities">
         <div class="bg-holder d-none d-sm-block" style="background-image:url(assets-landing/img/illustrations/bg.png);background-position:top left;background-size:225px 755px;margin-top:-17.5rem;"></div>
         <!--/.bg-holder-->
-        <div class="container">
+        {{-- <div class="container">
           <div class="row">
             <div class="col-lg-9 mx-auto text-center mb-3">
               <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">New Opportunities</h5>
@@ -111,12 +111,12 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
       </section>
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="py-5" id="invest">
+      {{-- <section class="py-5" id="invest">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-xl-9 mb-3">
@@ -153,10 +153,10 @@
             </div>
           </div>
         </div><!-- end of .container-->
-      </section><!-- <section> close ============================-->
+      </section><!-- <section> close ============================--> --}}
       <!-- ============================================-->
 
-      <section class="py-0">
+      {{-- <section class="py-0">
         <div class="bg-holder" style="background-image:url(assets-landing/img/illustrations/how-it-works.png);background-position:center bottom;background-size:cover;"></div>
         <!--/.bg-holder-->
         <div class="container-lg">
@@ -219,8 +219,8 @@
             </div>
           </div>
         </div>
-      </section>
-      <section class="py-8" id="testimonial">
+      </section> --}}
+      {{-- <section class="py-8" id="testimonial">
         <div class="container-lg">
           <div class="row flex-center">
             <div class="col-12 col-lg-10 col-xl-12">
@@ -366,11 +366,11 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="z-index-1 cta">
+      {{-- <section class="z-index-1 cta">
         <div class="container">
           <div class="row flex-center">
             <div class="col-12">
@@ -382,7 +382,7 @@
             </div>
           </div>
         </div><!-- end of .container-->
-      </section><!-- <section> close ============================-->
+      </section><!-- <section> close ============================--> --}}
       <!-- ============================================-->
 
       <section class="py-0" id="contact">

@@ -64,6 +64,7 @@
                                 <div class="d-flex">
                                     <div class="w-75">
                                         <select name="upper[]" class="form-control" id="">
+                                            <option value="none">-- Pilih --</option>
                                             @foreach($indikator as $i)
                                                 <option value="{{$i->id}}" {{old('indikator_id')==$i->id ? 'selected':''}}>{{$i->indikator}}</option>
                                             @endforeach
@@ -88,6 +89,7 @@
                                 <div class="d-flex">
                                     <div class="w-75">
                                         <select name="lower[]" class="form-control" id="exampleFormControlSelect2">
+                                            <option value="none">-- Pilih --</option>
                                             @foreach($indikator as $i)
                                                 <option value="{{$i->id}}" {{old('indikator_id')==$i->id ? 'selected':''}}>{{$i->indikator}}</option>
                                             @endforeach

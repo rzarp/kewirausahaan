@@ -17,7 +17,7 @@ class UserController extends Controller
 {
     public function index() {
         $data['user'] = User::where('id', '!=', Auth::id())->get();
-        $data['role'] = ['0','1'];
+        $data['role'] = ['user' ,'admin'];
 
 
         // $title = 'Delete User!';

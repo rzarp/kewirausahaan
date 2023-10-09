@@ -135,7 +135,7 @@ $( document ).ready(function() {
                     upperElement += '            <label for="formula">'+v+'</label>';
                     upperElement += '        </div>';
                     upperElement += '        <div class="w-25">';
-                        upperElement += '            <input type="text" class="form-control" name="upper[]" value="'+upperValue[i]+'" >';
+                        upperElement += '            <input type="number" step=".01" class="form-control" name="upper[]" value="'+upperValue[i]+'" >';
                         upperElement += '        </div>';
                     upperElement += '    </div>';
 
@@ -155,7 +155,7 @@ $( document ).ready(function() {
                     lowerElement += '            <label for="formula">'+v+'</label>';
                     lowerElement += '        </div>';
                     lowerElement += '        <div class="w-25">';
-                        lowerElement += '            <input type="text" class="form-control" name="lower[]" value="'+lowerValue[i]+'" >';
+                        lowerElement += '            <input type="number" step=".01" class="form-control" name="lower[]" value="'+lowerValue[i]+'" >';
                         lowerElement += '        </div>';
                     lowerElement += '    </div>';
 

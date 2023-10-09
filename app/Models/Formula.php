@@ -34,7 +34,7 @@ class Formula extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    public function getRasioDataChart(){
+    public function getRasioDataChart($year = '2022'){
         $data = DB::table('rasios as r')
         ->selectRaw('
         sum(case when (month(r.cut_off_data) = 1) then r.rasio end) as Januari,
@@ -53,7 +53,8 @@ class Formula extends Model
         ->join('formulas as f','f.id','=','r.id_formula')
         ->groupBy('f.nama_formula')
         ->orderBy('f.created_at','desc')
-        ->where('f.id','=',$this->id)
+        ->whereRaw('year(cut_off_data) = ? AND f.id = ?', [$year, $this->id])
+        // ->andWhere('f.id','=',$this->id)
         ->get();
 
         return $data;

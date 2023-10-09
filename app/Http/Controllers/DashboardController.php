@@ -28,15 +28,6 @@ class DashboardController extends Controller
         $chart = Rasio::all();
         $information1 = Rasio::selectRaw('nama_rasio, count(id) as total')->groupBy('nama_rasio')->get();
         $formula = Formula::all();
-        $formulas= [];
-        foreach ($formula as $key => $value) {
-            if (count($value->getRasioDataChart()) > 0) {
-                array_push($formulas, [
-                    'label' => $value->nama_formula,
-                    'data' => $value->getRasioDataChart()[0]
-                ]);
-            }
-        };
 
         // return $information2;
 
@@ -74,7 +65,22 @@ class DashboardController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('admin.dashboard',compact('information1','user','rasio_all','chart', 'formulas'));
+        return view('admin.dashboard',compact('information1','user','rasio_all','chart'));
+    }
+
+    function chart(Request $request, $year) {
+        $formula = Formula::all();
+        $formulas= [];
+        foreach ($formula as $key => $value) {
+            if (count($value->getRasioDataChart($year)) > 0) {
+                array_push($formulas, [
+                    'label' => $value->nama_formula,
+                    'data' => $value->getRasioDataChart($year)[0]
+                ]);
+            }
+        };
+
+        return response()->json($formulas, 200);
     }
 
 

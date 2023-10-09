@@ -30,6 +30,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
+Route::get('/dataChart/{year}', [DashboardController::class, 'chart'])->name('dashboard-chart')->middleware(['auth']);
 
 
 

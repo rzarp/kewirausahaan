@@ -82,8 +82,8 @@
                         <div class="form-group">
                             <label for="role">Role</label>
                             <select name="role" class="form-control" id="role">
-                                @foreach($role as $r)
-                                    <option value="{{ $r }}" {{ old('role') == $r ? 'selected' : '' }}>{{ $r }}</option>
+                                @foreach($role as $key => $r)
+                                    <option value="{{ $key }}" {{ old('role') == $r[0] ? 'selected' : '' }}>{{ $r }}</option>
                                 @endforeach
                             </select>
                             @error('role')
@@ -159,8 +159,8 @@
                         <div class="form-group">
                             <label for="role">Role</label>
                             <select name="role" class="form-control" id="edit-role">
-                                @foreach($role as $r)
-                                    <option value="{{ $r }}">{{ $r }}</option>
+                                @foreach($role as $key => $r)
+                                    <option value="{{ $key }}">{{ $r }}</option>
                                 @endforeach
                             </select>
                             @error('role')
