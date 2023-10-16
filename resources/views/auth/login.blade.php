@@ -70,12 +70,22 @@
                 <img src="{{asset('assets/img/kemenkop.png')}}"  width="300" height="80" alt="navbar brand" class="navbar-brand center">
                 <br><br>
 				<h3 class="text-center">Silahkan Login</h3>
+                   <!-- Session Status -->
+                    {{-- <x-auth-session-status class="mb-4" :status="session('status')" /> --}}
+
+                    {{-- <!-- Validation Errors -->
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
                 <form method="POST" action="{{ route('login') }}">
                 @csrf
                     <div class="login-form">
                         <div class="form-group">
                             <label for="username" class="placeholder"><b>Username</b></label>
                             <input id="username" name="username" type="text" class="form-control"  required>
+                            @error('username')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="password" class="placeholder"><b>Password</b></label>
@@ -84,6 +94,11 @@
                                 <div class="show-password">
                                     <i class="icon-eye"></i>
                                 </div>
+                                @error('password')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group form-action-d-flex mb-3">
@@ -93,7 +108,7 @@
                             </div>
                             <button class="btn btn-success col-md-5 float-right mt-3 mt-sm-0 fw-bold">Login</button>
                         </div>
-
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     </div>
                 </form>
 			</div>

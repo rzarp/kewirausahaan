@@ -8,7 +8,15 @@
                 <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                     <span>
                         {{ Auth::user()->name }}
-                        <span class="user-level">Administrator</span>
+                        <span class="user-level">
+                            @if(Auth::user()->role === 0)
+                                User
+                            @elseif(Auth::user()->role === 1)
+                                Admin
+                            @else
+                                Undefined Role
+                            @endif
+                        </span>
                         {{-- <span class="caret"></span> --}}
                     </span>
                 </a>
@@ -42,7 +50,7 @@
                     <p>Dashboard</p>
                     <!-- <span class="caret"></span>  -->
                 </a>
-
+                @if(Auth::user()->role !== 0)
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
@@ -64,6 +72,7 @@
                         <!-- <span class="caret"></span>  -->
                     </a>
                 </li>
+                @endif
             </li>
 
             <li class="nav-section">

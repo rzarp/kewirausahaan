@@ -43,14 +43,18 @@ class AuthenticatedSessionController extends Controller
             if ($user->status_user == 1) {
                 Session::regenerate();
                 return redirect()->intended(RouteServiceProvider::HOME);
-            } else {
+            } if ($user->status_user == 0) {
+                Session::regenerate();
+                return redirect()->intended(RouteServiceProvider::HOME);
+            }
+            else  {
                 Auth::logout();
                 return Redirect::back()->withErrors(['error' => 'Maaf Akun Anda nonaktif, mohon hubungi Admin']);
             }
         } else {
             return Redirect::back()->withErrors(['username' => 'username atau kata sandi salah']);
         }
-        
+
 
         // return redirect()->intended(RouteServiceProvider::HOME);
     }

@@ -26,7 +26,7 @@ Route::get('/', function () {
 });
 
 
-// Dashboard
+// Dashboard admin
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
@@ -132,4 +132,9 @@ Route::prefix('rasio')->middleware('auth')->group(function () {
 
 
 });
+
+
+
+
+
 

@@ -42,7 +42,7 @@
               {{-- <li class="nav-item px-2"><a class="nav-link fw-medium" href="#Opportuanities">Opportuanities</a></li> --}}
               {{-- <li class="nav-item px-2"><a class="nav-link fw-medium" href="#testimonial">Testimonial</a></li>
               <li class="nav-item px-2"><a class="nav-link fw-medium" href="#invest">Invest</a></li> --}}
-              <li class="nav-item px-2"><a class="nav-link fw-medium" href="#contact">Contact </a></li>
+              {{-- <li class="nav-item px-2"><a class="nav-link fw-medium" href="#contact">Contact </a></li> --}}
             </ul>
             <form class="d-flex"><a href="{{route('login')}}" class="btn btn-lg btn-dark bg-gradient order-0" type="submit">Masuk</a></form>
           </div>
@@ -385,7 +385,7 @@
       </section><!-- <section> close ============================--> --}}
       <!-- ============================================-->
 
-      <section class="py-0" id="contact">
+      {{-- <section class="py-0" id="contact">
         <div class="bg-holder" style="background-image:url(assets-landing/img/illustrations/footer-bg.png);background-position:center;background-size:cover;"></div>
         <!--/.bg-holder-->
         <div class="container">
@@ -437,7 +437,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
     </main><!-- ===============================================-->
     <!--    End of Main Content-->
     <!-- ===============================================-->
