@@ -4,7 +4,7 @@
 
 <div class="page-inner">
     <div class="page-header">
-        <h4 class="page-title">Tables</h4>
+        <h4 class="page-title">User</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="#">
@@ -15,13 +15,13 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Tables</a>
+                <a href="#">Data Master</a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Basic Tables</a>
+                <a href="#">User</a>
             </li>
         </ul>
     </div>
@@ -32,7 +32,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -108,7 +108,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

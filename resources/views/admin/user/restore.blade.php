@@ -3,7 +3,7 @@
 @section('restore-user')
 <div class="page-inner">
     <div class="page-header">
-        <h4 class="page-title">Tables</h4>
+        <h4 class="page-title">Restore User</h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="#">
@@ -14,13 +14,13 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Tables</a>
+                <a href="#">Data master</a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Basic Tables</a>
+                <a href="#">Restore</a>
             </li>
         </ul>
     </div>
@@ -31,7 +31,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">restore data user</h4>
-                        
+
                     </div>
                     <div class="pull-right">
                         <a href="{{ url('user/delete/user') }}" class="btn btn-danger btn-sm">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    
+
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -89,10 +89,10 @@
                                                 Delete All
                                             </button>
 
-                                       
+
                                         </div>
                                     </td>
-                                    
+
                                 </tr>
                             </tbody>
                             @endforeach
@@ -103,6 +103,6 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 @endsection
